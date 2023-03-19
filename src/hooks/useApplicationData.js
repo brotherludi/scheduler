@@ -24,6 +24,30 @@ export default function useApplicationData() {
 
   const setDay = day => setState({ ...state, day });
 
+  function updateSpotsRemaining() {
+    let spotsRemaining = 5;
+
+    for (let day in state.days) {
+      if (state.days[day].name === state.day) {
+        for (let id of state.days[day].appointments) {
+          if (state.appointments[id].interview !== null) {
+            spotsRemaining--;
+          }
+        }
+      }
+    }
+    return state.days.map(day => {
+      if (day.name !== state.day) {
+        return day
+      } else {
+        return {
+          ...day,
+          spots: spotsRemaining
+        };
+      }
+    });
+  };
+
   function bookInterview(id, interview) {
     console.log(id, interview);
 
@@ -43,6 +67,7 @@ export default function useApplicationData() {
           ...state,
           appointments
         });
+        updateSpotsRemaining();
       })
   }
 
@@ -52,6 +77,7 @@ export default function useApplicationData() {
         setState({
           ...state
         });
+        updateSpotsRemaining();
       })
   }
 
