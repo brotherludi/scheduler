@@ -24,11 +24,9 @@ export default function useApplicationData() {
       })
   }, [spots]);
 
-  const setDay = day => setState({ ...state, day });
+  const setDay = (day) => setState({ ...state, day });
 
   function updateSpotsRemaining() {
-    let spotsRemaining = 5;
-
     for (let day in state.days) {
       if (state.days[day].name === state.day) {
         for (let id of state.days[day].appointments) {
