@@ -22,4 +22,4 @@ https://user-images.githubusercontent.com/110562017/227681292-94dd44f1-5fa9-4a63
 - @testing-library/react-hooks
 - react-test-renderer
 
-#### Have fun booking and enjoy! 👍🏻
+#### Have fun booking and enjoy! 🎉
