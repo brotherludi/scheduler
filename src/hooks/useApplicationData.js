@@ -10,6 +10,8 @@ export default function useApplicationData() {
     interviewers: {}
   });
 
+  const [spots, setSpots] = useState(5);
+
   useEffect(() => {
     Promise.all([axios.get('/api/days'), axios.get('/api/appointments'), axios.get('/api/interviewers')])
       .then((response) => {
@@ -20,7 +22,7 @@ export default function useApplicationData() {
           interviewers: response[2].data
         }));
       })
-  }, []);
+  }, [spots]);
 
   const setDay = day => setState({ ...state, day });
 
@@ -31,7 +33,7 @@ export default function useApplicationData() {
       if (state.days[day].name === state.day) {
         for (let id of state.days[day].appointments) {
           if (state.appointments[id].interview !== null) {
-            spotsRemaining--;
+            setSpots(spots - 1);
           }
         }
       }
@@ -42,7 +44,7 @@ export default function useApplicationData() {
       } else {
         return {
           ...day,
-          spots: spotsRemaining
+          spots: spots,
         };
       }
     });
