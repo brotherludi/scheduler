@@ -19,7 +19,10 @@ https://user-images.githubusercontent.com/110562017/227681292-94dd44f1-5fa9-4a63
 ## Dependencies
 
 - axios
-- @testing-library/react-hooks
-- react-test-renderer
+- classnames
+- normalize.css
+- react
+- react-dom
+- react-scripts
 
 #### Have fun booking and enjoy! 🎉

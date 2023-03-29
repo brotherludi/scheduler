@@ -25,7 +25,8 @@ export default function useApplicationData() {
   }, [spots]);
 
   const setDay = (day) => setState({ ...state, day });
-
+  
+  //function to update how many interview spots left
   function updateSpotsRemaining() {
     for (let day in state.days) {
       if (state.days[day].name === state.day) {
@@ -49,7 +50,6 @@ export default function useApplicationData() {
   };
 
   function bookInterview(id, interview) {
-    console.log(id, interview);
 
     const appointment = {
       ...state.appointments[id],
